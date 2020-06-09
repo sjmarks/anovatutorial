@@ -1,1 +1,85 @@
-# ANOVA Basics
+# ANOVA Basics {#basics}
+
+As alluded to in Part \@ref(intro) of this tutorial, we use ANOVA to make decisions about the relationships among means. Typically we do this when we have **more than two** treatment groups. This is because we could simply use a two-sample t-test to compare two (independent) groups. The power of ANOVA is that we can compare more than two means. For example, let us look at the `InsectSprays` data set in R [@beall1942]. This simple data set provides counts of insects treated with 6 different insecticides.
+
+First, let us consider the components of this experiment and its design:
+
+**Treatment Structure**
+
+* Factor: Insecticide (spray)
+
+* Level: 6 levels (A, B, C, D, E, F)
+
+**Design Structure**
+
+* Experimental Unit: A plot of insects
+
+* Randomization Method: Completely randomized design (CRD)
+
+* Replication: 12 replicates per type of insecticide (spray)
+
+**Response Variable**
+
+* Number of insects counted in a plot after application of insecticide
+
+The design structure above warrants some additional discussion. Firstly, the experimental unit is defined as the unit that the treatment is applied. The randomization method of CRD communicates that the experimental units were randomly assigned to each treatment. In this case, insect plots were randomly assigned one of the 6 sprays. Random assignment _**equalizes**_ the extraneous sources of variability in comparison of the treatment groups. This enables cause and effect conclusions to be drawn from the experiment, protecting against extra variation in the response variable from becoming confounding variables. For example, we might assume that the insects in this study have genetic variation which would make some insects more or less susceptible to certain sprays- CRD makes sure this isn't the reason a plot responds a certain way to one of the 6 sprays. Lastly, replication is important because it serves to distribute extraneous variation in the response equally, giving us a reasonably equal variance within all treatment groups.
+
+With the preliminaries out of the way, let us now explore the `InsectSprays` data:
+
+```{r echo = F, message = F, warning = F}
+library(ggplot2)
+library(dplyr)
+```
+
+```{r}
+insects <- InsectSprays 
+
+insects %>%
+  group_by(spray) %>% 
+  summarise(mean = mean(count), `std dev` = sd(count))
+```
+
+```{r echo = F}
+insects_plot_theme <- theme(axis.title.y = element_blank(), axis.text.y = element_blank(), 
+                     panel.grid = element_blank(), axis.ticks.y = element_blank(), panel.background = element_blank(),
+                     plot.title = element_text(size=12, face="bold", vjust=1, lineheight=1), 
+                     legend.background = element_rect(fill="transparent"), plot.background = element_rect(fill = "#F5F5F5"),
+                     legend.position = c(0.01, 1), legend.justification = c("left", "top"),
+                     legend.box.just = "left", legend.margin = margin(0.1, 2, 0.1, 0.1),
+                     legend.text = element_text(color = "black", size = 7, face = "bold"),
+                     legend.title=element_blank())
+
+plot_insects <- insects %>%
+  mutate(spray = forcats::fct_reorder(spray, count, .fun='mean')) %>%
+  ggplot(aes(x = spray, y = count, 
+             fill = spray)) + 
+  geom_boxplot(alpha = 0.6) +
+  geom_jitter(aes(color = spray), size = 1.5, pch = 15) +
+  coord_flip(ylim = c(0,30)) +
+  scale_fill_manual(values=c("#a2a34c", "#dc9ca4", "#8c6844", "#c46c4c", 
+                             "#091404", "#6c9469"),
+                    breaks=c("A", "B", 
+                             "C", "D", "E", "F")) +
+  scale_color_manual(values=c("#a2a34c", "#dc9ca4", "#8c6844", "#c46c4c", 
+                             "#091404", "#6c9469"),
+                    breaks=c("A", "B", 
+                             "C", "D", "E", "F")) +
+  insects_plot_theme +
+  ggtitle("Insect Count by Spray Treatment") +
+  ylab("Insect Count")
+
+```
+
+```{r insect-boxplot, fig.cap='Boxplot showing differences and variation in count response between insecticide treatment groups.', out.width='80%', fig.asp=.75, fig.align='center'}
+plot_insects
+```
+
+Looking at the produced tibble and box plot, it appears that there is variability in insect count for insect plots exposed to different insecticides. Insect plots exposed to **Spray F** had the highest count on average (16.7), while insect plots exposed to **Spray C** had the lowest count on average (2.08). The graph and table also illustrate differences in within treatment group variation for the 6 sprays; the spread of the observations vary between each group. For example, the **Spray E** group had low variance with a standard deviation of 1.73 insects, while **Spray F** had high variance with a standard deviation of 6.21 insects.
+
+These initial observations from our data exploration are nice, but the question remains as to whether or not the observed variation in the insect counts is truly due to variation due to spray. The next part of the tutorial will demonstrate two models for our data that will help us answer this question.
+
+## Check-in
+
+1. Suppose the insect plots in the above experiment were comprised using only one insect species. What is one _statistical advantage_ of doing this?
+
+2. What is the _statistical disadvantage_ of limiting plots to one type of insect species?  
