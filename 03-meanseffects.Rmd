@@ -444,6 +444,6 @@ insects_checkin2 %>%
   summarise(mean = mean(count), `std dev` = sd(count))
 ```
 
-Will one of the two data sets produce a larger F-statistic (Scenario 1 or Scenario 2)? Why or  why not.
+Assume in both scenarios that 12 replicates per treatment group were used. Will one of the two data sets produce a larger F-statistic (Scenario 1 or Scenario 2)? Why or  why not.
 
 2. Suppose we want to run an ANOVA on a experiment set-up with 3 different treatment groups (2 replicates per treatment) using the **effects model**. There is 1 observation of the response variable per replicate for this experiment. To compute our model parameters, how would we set up the design matrix?

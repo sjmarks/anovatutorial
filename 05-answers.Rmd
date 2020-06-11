@@ -5,3 +5,19 @@
 1. Limiting plots to one insect species is an _**inclusion criteria**_ imposed on the experiment. The statistical advantage of doing this is you reduce extraneous variation in the response variable due to other factors, which is helpful to reaching a statistically significant result in the ANOVA.
 
 2. The disadvantage of this inclusion criteria is that the scope of the conclusions drawn from the experiment are limited to the chosen insect species.
+
+## Part 3
+
+1. Scenario 1 will have the larger F-statistic- both scenarios have the same treatment group means and therefore the same amount of between treatment group variation. The two scenarios differ in that scenario 2 has more within group variation. The F-stat is calculated as the ratio between mean square treatment to mean square error leading to a higher F-stat for scenario 1 viz.,
+
+$$F^{*} = MST/MSE$$
+
+2. $$X = \left[\begin{array}
+{rrr}
+1 & 1 & 0 \\
+1 & 1 & 0\\
+1 & 0 & 1\\
+1 & 0 & 1\\
+1 & -1 & -1\\
+1 & -1 & -1\\
+\end{array}\right]$$
