@@ -1,5 +1,10 @@
 # ANOVA Basics {#basics}
 
+```{r echo = F, message = F, warning = F}
+library(ggplot2)
+library(dplyr)
+```
+
 As alluded to in Part \@ref(intro) of this tutorial, we use ANOVA to make decisions about the relationships among means. Typically we do this when we have **more than two** treatment groups. This is because we could simply use a two-sample t-test to compare two (independent) groups. The power of ANOVA is that we can compare more than two means. For example, let us look at the `InsectSprays` data set in R [@beall1942]. This simple data set provides counts of insects treated with 6 different insecticides.
 
 First, let us consider the components of this experiment and its design:
@@ -25,11 +30,6 @@ First, let us consider the components of this experiment and its design:
 The design structure above warrants some additional discussion. Firstly, the experimental unit is defined as the unit that the treatment is applied. The randomization method of CRD communicates that the experimental units were randomly assigned to each treatment. In this case, insect plots were randomly assigned one of the 6 sprays. Random assignment _**equalizes**_ the extraneous sources of variability in comparison of the treatment groups. This enables cause and effect conclusions to be drawn from the experiment, protecting against extra variation in the response variable from becoming confounding variables. For example, we might assume that the insects in this study have genetic variation which would make some insects more or less susceptible to certain sprays- CRD makes sure this isn't the reason a plot responds a certain way to one of the 6 sprays. Lastly, replication is important because it serves to distribute extraneous variation in the response equally, giving us a reasonably equal variance within all treatment groups.
 
 With the preliminaries out of the way, let us now explore the `InsectSprays` data:
-
-```{r echo = F, message = F, warning = F}
-library(ggplot2)
-library(dplyr)
-```
 
 ```{r}
 insects <- InsectSprays 
@@ -70,7 +70,7 @@ plot_insects <- insects %>%
 
 ```
 
-```{r insect-boxplot, fig.cap='Boxplot showing differences and variation in count response between insecticide treatment groups.', out.width='80%', fig.asp=.75, fig.align='center'}
+```{r insect-boxplot, fig.cap='Boxplot showing differences and variation in count response between insecticide treatment groups.', out.width='80%', fig.asp=.75, fig.align='left', echo = F}
 plot_insects
 ```
 

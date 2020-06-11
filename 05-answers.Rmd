@@ -1,6 +1,6 @@
 # Check-in Answers
 
-### Part \@ref(basics)
+## Part 2
 
 1. Limiting plots to one insect species is an _**inclusion criteria**_ imposed on the experiment. The statistical advantage of doing this is you reduce extraneous variation in the response variable due to other factors, which is helpful to reaching a statistically significant result in the ANOVA.
 
