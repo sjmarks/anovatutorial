@@ -184,9 +184,9 @@ F_stat <- MS_trt / MS_error
 decorate("meansmodel-compute") %>% 
   flair("design_matrix", background = "orange") %>%
   flair("trt_means", background = "red") %>% 
-  flair("ss_tot", background = "blue") %>% 
-  flair("ss_trt", background = "blue") %>% 
-  flair("ss_error", background = "blue") %>% 
+  flair("ss_tot", background = "yellow") %>% 
+  flair("ss_trt", background = "yellow") %>% 
+  flair("ss_error", background = "yellow") %>% 
   flair("F_stat", background = "green")
 
 ```
@@ -241,7 +241,7 @@ y_{3,2} \\
 \end{array}\right]$$
 $$\overline{y}_{i.} = (X'X)^{-1}X'Y$$
 
-2. Our `r colorize("SS values", "blue")` are computed using matrix operations carrying out the equations described in \@ref(bookkeep). For brevity I will not describe the operations in detail.
+2. Our `r colorize("SS values", "yellow")` are computed using matrix operations carrying out the equations described in \@ref(bookkeep). For brevity I will not describe the operations in detail.
 3. Lastly, our ANOVA `r colorize("F-statistic", "green")` is calculated by taking the ratio of our **mean sum of squares treatment** (between treatment group variation) and **mean sum of squares error** (within treatment group variation). A high `r colorize("F-statistic", "green")` is our measure to suggest the variation is largely explained by our explanatory variable rather than random variation. In the context of the means model, it allows us to conclude that at least one of our treatment means is significantly different from 0. The value of our `r colorize("F-statistic", "green")` for our `InsectSprays` example computed above is:
 
 ```{r}
@@ -324,9 +324,9 @@ F_stat <- MS_trt / MS_error
 decorate("effectsmodel-compute") %>% 
   flair("design_matrix", background = "orange") %>%
   flair("model_param", background = "red") %>% 
-  flair("ss_tot", background = "blue") %>% 
-  flair("ss_trt", background = "blue") %>% 
-  flair("ss_error", background = "blue") %>% 
+  flair("ss_tot", background = "yellow") %>% 
+  flair("ss_trt", background = "yellow") %>% 
+  flair("ss_error", background = "yellow") %>% 
   flair("F_stat", background = "green")
 
 ```

@@ -10,7 +10,7 @@
 
 1. Scenario 1 will have the larger F-statistic- both scenarios have the same treatment group means and therefore the same amount of between treatment group variation. The two scenarios differ in that scenario 2 has more within group variation. The F-stat is calculated as the ratio between mean square treatment to mean square error leading to a higher F-stat for scenario 1 viz.,
 
-$$F^{*} = MST/MSE$$
+$$F^{*} = MS_{trt}/MS_{error}$$
 
 2. $$X = \left[\begin{array}
 {rrr}
