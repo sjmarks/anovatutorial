@@ -8,9 +8,9 @@ library(flair)
 
 ## ANOVA Bookkeeping {#bookkeep}
 
-In Part \@ref(intro) we mentioned ANOVA is a way to keep track of the variation in a response variable. Figure \@ref(fig:flowchart) provides a schematic for how we can think about this for our `InsectSprays` data set example introduced in Part \@ref(basics).
+In Part \@ref(intro) we mentioned ANOVA is a way to keep track of the variation in a response variable. Figure \@ref(fig:flowchart1) provides a schematic for how we can think about this for our `InsectSprays` data set example introduced in Part \@ref(basics).
 
-```{r flowchart, fig.cap='Conceptual diagram for variation accounting in the insecticide example.', out.width='80%', fig.asp=.75, fig.align='center', echo = F}
+```{r flowchart1, fig.cap='Conceptual diagram for variation accounting in the insecticide example.', out.width='80%', fig.asp=.75, fig.align='center', echo = F}
 knitr::include_graphics('anovaflowchart.JPG')
 ```
 

@@ -5,26 +5,26 @@
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>1-Way ANOVA- Model Representations, Power, and Sample Size Tutorial</title>
-  <meta name="description" content="This is a interactive 1-way ANOVA tutorial built with bookdown." />
+  <meta name="description" content="This is a 1-way ANOVA tutorial built with bookdown." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
   <meta property="og:title" content="1-Way ANOVA- Model Representations, Power, and Sample Size Tutorial" />
   <meta property="og:type" content="book" />
   
   
-  <meta property="og:description" content="This is a interactive 1-way ANOVA tutorial built with bookdown." />
-  <meta name="github-repo" content="rstudio/bookdown-demo" />
+  <meta property="og:description" content="This is a 1-way ANOVA tutorial built with bookdown." />
+  <meta name="github-repo" content="sjmarks/anovatutorial" />
 
   <meta name="twitter:card" content="summary" />
   <meta name="twitter:title" content="1-Way ANOVA- Model Representations, Power, and Sample Size Tutorial" />
   
-  <meta name="twitter:description" content="This is a interactive 1-way ANOVA tutorial built with bookdown." />
+  <meta name="twitter:description" content="This is a 1-way ANOVA tutorial built with bookdown." />
   
 
 <meta name="author" content="Simon Marks" />
 
 
-<meta name="date" content="2020-06-08" />
+<meta name="date" content="2020-06-11" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
@@ -32,7 +32,7 @@
   
   
 
-<link rel="next" href="anova-basics.html"/>
+<link rel="next" href="basics.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -132,9 +132,27 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 
 <li class="divider"></li>
 <li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
-<li class="chapter" data-level="2" data-path="anova-basics.html"><a href="anova-basics.html"><i class="fa fa-check"></i><b>2</b> ANOVA Basics</a></li>
-<li class="chapter" data-level="3" data-path="the-means-and-effects-models.html"><a href="the-means-and-effects-models.html"><i class="fa fa-check"></i><b>3</b> The Means and Effects Models</a></li>
-<li class="chapter" data-level="4" data-path="power-and-sample-size.html"><a href="power-and-sample-size.html"><i class="fa fa-check"></i><b>4</b> Power and Sample Size</a></li>
+<li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> ANOVA Basics</a><ul>
+<li class="chapter" data-level="2.1" data-path="basics.html"><a href="basics.html#check-in"><i class="fa fa-check"></i><b>2.1</b> Check-in</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="meanseffects.html"><a href="meanseffects.html"><i class="fa fa-check"></i><b>3</b> The Means and Effects Models</a><ul>
+<li class="chapter" data-level="3.1" data-path="meanseffects.html"><a href="meanseffects.html#bookkeep"><i class="fa fa-check"></i><b>3.1</b> ANOVA Bookkeeping</a></li>
+<li class="chapter" data-level="3.2" data-path="meanseffects.html"><a href="meanseffects.html#means-model"><i class="fa fa-check"></i><b>3.2</b> Means Model</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="meanseffects.html"><a href="meanseffects.html#employing-the-means-model-to-do-1-way-anova-in-r"><i class="fa fa-check"></i><b>3.2.1</b> Employing the Means Model to do 1-way ANOVA in R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="meanseffects.html"><a href="meanseffects.html#effects-model"><i class="fa fa-check"></i><b>3.3</b> Effects Model</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="meanseffects.html"><a href="meanseffects.html#employing-the-effects-model-to-do-1-way-anova-in-r"><i class="fa fa-check"></i><b>3.3.1</b> Employing the Effects Model to do 1-way ANOVA in R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="meanseffects.html"><a href="meanseffects.html#check-in-1"><i class="fa fa-check"></i><b>3.4</b> Check-in</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="power-and-sample-size.html"><a href="power-and-sample-size.html"><i class="fa fa-check"></i><b>4</b> Power and Sample Size</a><ul>
+<li class="chapter" data-level="4.1" data-path="power-and-sample-size.html"><a href="power-and-sample-size.html#power"><i class="fa fa-check"></i><b>4.1</b> Power</a></li>
+<li class="chapter" data-level="4.2" data-path="power-and-sample-size.html"><a href="power-and-sample-size.html#playing-with-sample-size"><i class="fa fa-check"></i><b>4.2</b> Playing with Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="check-in-answers.html"><a href="check-in-answers.html"><i class="fa fa-check"></i><b>5</b> Check-in Answers</a><ul>
+<li class="chapter" data-level="5.1" data-path="check-in-answers.html"><a href="check-in-answers.html#part-2"><i class="fa fa-check"></i><b>5.1</b> Part 2</a></li>
+<li class="chapter" data-level="5.2" data-path="check-in-answers.html"><a href="check-in-answers.html#part-3"><i class="fa fa-check"></i><b>5.2</b> Part 3</a></li>
+</ul></li>
 <li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
 <li class="divider"></li>
 <li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
@@ -159,189 +177,20 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <div id="header">
 <h1 class="title">1-Way ANOVA- Model Representations, Power, and Sample Size Tutorial</h1>
 <p class="author"><em>Simon Marks</em></p>
-<p class="date"><em>2020-06-08</em></p>
+<p class="date"><em>2020-06-11</em></p>
 </div>
 <div id="intro" class="section level1">
 <h1><span class="header-section-number">Part 1</span> Introduction</h1>
 <p>ANOVA is short for analysis of variance. It is a widely used statistical method used with designed experiments. Given its frequency of use, it is my opinion that anyone interested in academic research understand the basics. . . even if you never use it in your own research, I guarantee you will encounter it somewhere in the literature! Briefly, ANOVA is an “accounting” procedure that keeps track of all the variation in a response variable. ANOVA partitions this variation into pieces and uses these pieces to assess the likelihood that differences found between means in sample data could be the result of random chance.</p>
 <p>This tutorial focuses on 1-way ANOVA, specifically ways to model our data in the context of this statistical method. We introduce the means and effects models and their assumptions and implement these approaches manually in R. We also discuss power and sample size and provide an interactive visualization to see what influences power in an ANOVA. Discussion of power and sample size helps answer the question: “How might we increase the chances of getting a statistically significant result from our ANOVA?” Thinking about power and sample size not only will bolster your statistical chops, it might also come in handy in practice when planning research design or writing research grant proposals.</p>
-<p>The tutorial assumes you have used R before. Many of the examples and demos utilize functions from the Tidyverse. This tutorial was written using the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span>, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-xie2015" role="doc-biblioref">2015</a>)</span>.</p>
-<p>You can label chapter and section titles using <code>{#label}</code> after them, e.g., we can reference Chapter <a href="index.html#intro">1</a>. If you do not manually label them, there will be automatic labels anyway, e.g., Chapter <a href="#methods"><strong>??</strong></a>.</p>
-<p>Figures and tables with captions will be placed in <code>figure</code> and <code>table</code> environments, respectively.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw">par</span>(<span class="dt">mar =</span> <span class="kw">c</span>(<span class="dv">4</span>, <span class="dv">4</span>, <span class="fl">.1</span>, <span class="fl">.1</span>))</a>
-<a class="sourceLine" id="cb1-2" title="2"><span class="kw">plot</span>(pressure, <span class="dt">type =</span> <span class="st">&#39;b&#39;</span>, <span class="dt">pch =</span> <span class="dv">19</span>)</a></code></pre></div>
-<div class="figure" style="text-align: center"><span id="fig:nice-fig"></span>
-<img src="anova-tutorial_files/figure-html/nice-fig-1.png" alt="Here is a nice figure!" width="80%" />
-<p class="caption">
-Figure 1.1: Here is a nice figure!
-</p>
-</div>
-<p>Reference a figure by its code chunk label with the <code>fig:</code> prefix, e.g., see Figure <a href="index.html#fig:nice-fig">1.1</a>. Similarly, you can reference tables generated from <code>knitr::kable()</code>, e.g., see Table <a href="index.html#tab:nice-tab">1.1</a>.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">knitr<span class="op">::</span><span class="kw">kable</span>(</a>
-<a class="sourceLine" id="cb2-2" title="2">  <span class="kw">head</span>(iris, <span class="dv">20</span>), <span class="dt">caption =</span> <span class="st">&#39;Here is a nice table!&#39;</span>,</a>
-<a class="sourceLine" id="cb2-3" title="3">  <span class="dt">booktabs =</span> <span class="ot">TRUE</span></a>
-<a class="sourceLine" id="cb2-4" title="4">)</a></code></pre></div>
-<table>
-<caption><span id="tab:nice-tab">Table 1.1: </span>Here is a nice table!</caption>
-<thead>
-<tr class="header">
-<th align="right">Sepal.Length</th>
-<th align="right">Sepal.Width</th>
-<th align="right">Petal.Length</th>
-<th align="right">Petal.Width</th>
-<th align="left">Species</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.7</td>
-<td align="right">3.2</td>
-<td align="right">1.3</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.6</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.0</td>
-<td align="right">3.6</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.7</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.6</td>
-<td align="right">3.4</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.0</td>
-<td align="right">3.4</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.4</td>
-<td align="right">2.9</td>
-<td align="right">1.4</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.9</td>
-<td align="right">3.1</td>
-<td align="right">1.5</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.4</td>
-<td align="right">3.7</td>
-<td align="right">1.5</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.8</td>
-<td align="right">3.4</td>
-<td align="right">1.6</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">4.8</td>
-<td align="right">3.0</td>
-<td align="right">1.4</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">4.3</td>
-<td align="right">3.0</td>
-<td align="right">1.1</td>
-<td align="right">0.1</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.8</td>
-<td align="right">4.0</td>
-<td align="right">1.2</td>
-<td align="right">0.2</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.7</td>
-<td align="right">4.4</td>
-<td align="right">1.5</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.4</td>
-<td align="right">3.9</td>
-<td align="right">1.3</td>
-<td align="right">0.4</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.1</td>
-<td align="right">3.5</td>
-<td align="right">1.4</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="odd">
-<td align="right">5.7</td>
-<td align="right">3.8</td>
-<td align="right">1.7</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-<tr class="even">
-<td align="right">5.1</td>
-<td align="right">3.8</td>
-<td align="right">1.5</td>
-<td align="right">0.3</td>
-<td align="left">setosa</td>
-</tr>
-</tbody>
-</table>
-<p>You can write citations, too. For example, we are using the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span> in this sample book, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-xie2015" role="doc-biblioref">2015</a>)</span>.</p>
-<p>Remember each Rmd file contains one and only one chapter, and a chapter is defined by the first-level heading <code>#</code>.</p>
-<p>To compile this example to PDF, you need XeLaTeX. You are recommended to install TinyTeX (which includes XeLaTeX): <a href="https://yihui.name/tinytex/" class="uri">https://yihui.name/tinytex/</a>.</p>
+<p>The tutorial assumes you have used R before and are familar working with matrices. Some examples and demos utilize functions from the <strong>Tidyverse</strong> <span class="citation">(Wickham <a href="#ref-R-tidyverse" role="doc-biblioref">2019</a>)</span>. This tutorial was written using the <strong>bookdown</strong> package <span class="citation">(Xie <a href="#ref-R-bookdown" role="doc-biblioref">2020</a>)</span>, which was built on top of R Markdown and <strong>knitr</strong> <span class="citation">(Xie <a href="#ref-xie2015" role="doc-biblioref">2015</a>)</span>.</p>
 
 </div>
 <h3>References</h3>
 <div id="refs" class="references">
+<div id="ref-R-tidyverse">
+<p>Wickham, Hadley. 2019. <em>Tidyverse: Easily Install and Load the ’Tidyverse’</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.</p>
+</div>
 <div id="ref-xie2015">
 <p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.</p>
 </div>
@@ -355,7 +204,7 @@ Figure 1.1: Here is a nice figure!
         </div>
       </div>
 
-<a href="anova-basics.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+<a href="basics.html" class="navigation navigation-next navigation-unique" aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>
@@ -405,6 +254,20 @@ gitbook.start({
 });
 </script>
 
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
 </body>
 
 </html>

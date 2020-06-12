@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+<head>
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>Part 3 The Means and Effects Models | 1-Way ANOVA- Model Representations, Power, and Sample Size Tutorial</title>
+  <meta name="description" content="This is a 1-way ANOVA tutorial built with bookdown." />
+  <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
+
+  <meta property="og:title" content="Part 3 The Means and Effects Models | 1-Way ANOVA- Model Representations, Power, and Sample Size Tutorial" />
+  <meta property="og:type" content="book" />
+  
+  
+  <meta property="og:description" content="This is a 1-way ANOVA tutorial built with bookdown." />
+  <meta name="github-repo" content="sjmarks/anovatutorial" />
+
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content="Part 3 The Means and Effects Models | 1-Way ANOVA- Model Representations, Power, and Sample Size Tutorial" />
+  
+  <meta name="twitter:description" content="This is a 1-way ANOVA tutorial built with bookdown." />
+  
+
+<meta name="author" content="Simon Marks" />
+
+
+<meta name="date" content="2020-06-11" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+  
+  
+<link rel="prev" href="basics.html"/>
+<link rel="next" href="power-and-sample-size.html"/>
+<script src="libs/jquery-2.2.3/jquery.min.js"></script>
+<link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-bookdown.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-highlight.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-search.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-fontsettings.css" rel="stylesheet" />
+<link href="libs/gitbook-2.6.7/css/plugin-clipboard.css" rel="stylesheet" />
+
+
+
+
+
+
+
+
+
+
+
+<style type="text/css">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(title);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {  }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+<link rel="stylesheet" href="style.css" type="text/css" />
+</head>
+
+<body>
+
+
+
+  <div class="book without-animation with-summary font-size-2 font-family-1" data-basepath=".">
+
+    <div class="book-summary">
+      <nav role="navigation">
+
+<ul class="summary">
+<li><a href="./">1-Way ANOVA Tutorial</a></li>
+
+<li class="divider"></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="2" data-path="basics.html"><a href="basics.html"><i class="fa fa-check"></i><b>2</b> ANOVA Basics</a><ul>
+<li class="chapter" data-level="2.1" data-path="basics.html"><a href="basics.html#check-in"><i class="fa fa-check"></i><b>2.1</b> Check-in</a></li>
+</ul></li>
+<li class="chapter" data-level="3" data-path="meanseffects.html"><a href="meanseffects.html"><i class="fa fa-check"></i><b>3</b> The Means and Effects Models</a><ul>
+<li class="chapter" data-level="3.1" data-path="meanseffects.html"><a href="meanseffects.html#bookkeep"><i class="fa fa-check"></i><b>3.1</b> ANOVA Bookkeeping</a></li>
+<li class="chapter" data-level="3.2" data-path="meanseffects.html"><a href="meanseffects.html#means-model"><i class="fa fa-check"></i><b>3.2</b> Means Model</a><ul>
+<li class="chapter" data-level="3.2.1" data-path="meanseffects.html"><a href="meanseffects.html#employing-the-means-model-to-do-1-way-anova-in-r"><i class="fa fa-check"></i><b>3.2.1</b> Employing the Means Model to do 1-way ANOVA in R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.3" data-path="meanseffects.html"><a href="meanseffects.html#effects-model"><i class="fa fa-check"></i><b>3.3</b> Effects Model</a><ul>
+<li class="chapter" data-level="3.3.1" data-path="meanseffects.html"><a href="meanseffects.html#employing-the-effects-model-to-do-1-way-anova-in-r"><i class="fa fa-check"></i><b>3.3.1</b> Employing the Effects Model to do 1-way ANOVA in R</a></li>
+</ul></li>
+<li class="chapter" data-level="3.4" data-path="meanseffects.html"><a href="meanseffects.html#check-in-1"><i class="fa fa-check"></i><b>3.4</b> Check-in</a></li>
+</ul></li>
+<li class="chapter" data-level="4" data-path="power-and-sample-size.html"><a href="power-and-sample-size.html"><i class="fa fa-check"></i><b>4</b> Power and Sample Size</a><ul>
+<li class="chapter" data-level="4.1" data-path="power-and-sample-size.html"><a href="power-and-sample-size.html#power"><i class="fa fa-check"></i><b>4.1</b> Power</a></li>
+<li class="chapter" data-level="4.2" data-path="power-and-sample-size.html"><a href="power-and-sample-size.html#playing-with-sample-size"><i class="fa fa-check"></i><b>4.2</b> Playing with Sample Size</a></li>
+</ul></li>
+<li class="chapter" data-level="5" data-path="check-in-answers.html"><a href="check-in-answers.html"><i class="fa fa-check"></i><b>5</b> Check-in Answers</a><ul>
+<li class="chapter" data-level="5.1" data-path="check-in-answers.html"><a href="check-in-answers.html#part-2"><i class="fa fa-check"></i><b>5.1</b> Part 2</a></li>
+<li class="chapter" data-level="5.2" data-path="check-in-answers.html"><a href="check-in-answers.html#part-3"><i class="fa fa-check"></i><b>5.2</b> Part 3</a></li>
+</ul></li>
+<li class="chapter" data-level="" data-path="references.html"><a href="references.html"><i class="fa fa-check"></i>References</a></li>
+<li class="divider"></li>
+<li><a href="https://github.com/rstudio/bookdown" target="blank">Published with bookdown</a></li>
+
+</ul>
+
+      </nav>
+    </div>
+
+    <div class="book-body">
+      <div class="body-inner">
+        <div class="book-header" role="navigation">
+          <h1>
+            <i class="fa fa-circle-o-notch fa-spin"></i><a href="./">1-Way ANOVA- Model Representations, Power, and Sample Size Tutorial</a>
+          </h1>
+        </div>
+
+        <div class="page-wrapper" tabindex="-1" role="main">
+          <div class="page-inner">
+
+            <section class="normal" id="section-">
+<div id="meanseffects" class="section level1">
+<h1><span class="header-section-number">Part 3</span> The Means and Effects Models</h1>
+<div id="bookkeep" class="section level2">
+<h2><span class="header-section-number">3.1</span> ANOVA Bookkeeping</h2>
+<p>In Part <a href="index.html#intro">1</a> we mentioned ANOVA is a way to keep track of the variation in a response variable. Figure <a href="meanseffects.html#fig:flowchart1">3.1</a> provides a schematic for how we can think about this for our <code>InsectSprays</code> data set example introduced in Part <a href="basics.html#basics">2</a>.</p>
+<div class="figure" style="text-align: center"><span id="fig:flowchart1"></span>
+<img src="anovaflowchart.JPG" alt="Conceptual diagram for variation accounting in the insecticide example." width="80%" />
+<p class="caption">
+Figure 3.1: Conceptual diagram for variation accounting in the insecticide example.
+</p>
+</div>
+<p>In 1-way ANOVA we partition the total variation in our response variable <strong>(SS Total)</strong> into two parts- variation due to treatment <strong>(SS Treatment)</strong> and the random error left over <strong>(SS Error)</strong>, viz <span class="citation">(Kutner et al. <a href="#ref-kutner2005" role="doc-biblioref">2005</a>)</span>.,</p>
+<p><span class="math display">\[SS_{total} =  SS_{trt} + SS_{error} = \sum_{i,j} (y_{ij} - \overline{y}_{..})^2\]</span>
+<span class="math display">\[ SS_{trt} = \sum_{i,j} (\overline{y}_{i.} - \overline{y}_{..})^2 \]</span>
+<span class="math display">\[ SS_{error} = \sum_{i,j} (y_{ij} - \overline{y}_{i.})^2 \]</span></p>
+<p>Don’t be intimidated by the formulas above. Basically, all we are saying is that we can decompose the total deviation from the overall mean response into two components:</p>
+<ol style="list-style-type: decimal">
+<li>The deviation of each treatment group mean from the grand mean of the response variable <em><strong>(between treatment group mean variation)</strong></em></li>
+<li>The deviation of each observation from its treatment group mean <em><strong>(within treatment group variation)</strong></em></li>
+</ol>
+<p>Figures <a href="meanseffects.html#fig:sstotal">3.2</a>, <a href="meanseffects.html#fig:sstrt">3.3</a>, and <a href="meanseffects.html#fig:sserror">3.4</a> provide visuals for each variation component in the context of our <code>InsectSprays</code> example.</p>
+<div class="figure" style="text-align: left"><span id="fig:sstotal"></span>
+<img src="anova-tutorial_files/figure-html/sstotal-1.png" alt="Visual of SS Total. The red-dotted line represents the grand mean insect count calculated from all insect plots. SS total is computed by subtracting each observed count from a plot from this grand mean, squaring, and then summing these values." width="80%" />
+<p class="caption">
+Figure 3.2: Visual of SS Total. The red-dotted line represents the grand mean insect count calculated from all insect plots. SS total is computed by subtracting each observed count from a plot from this grand mean, squaring, and then summing these values.
+</p>
+</div>
+<div class="figure" style="text-align: left"><span id="fig:sstrt"></span>
+<img src="anova-tutorial_files/figure-html/sstrt-1.png" alt="Visual of SS Treatment. The red-dotted line once again represents the grand mean for insect count. SS Treatment is computed by subtracting each treatment group mean for insect count (color coded lines) from this grand mean, squaring, and then multiplying by the j replicates comprising each treatment group, in this case 12. The 6 values corresponding to each treatment group resulting from this computation are then summed." width="80%" />
+<p class="caption">
+Figure 3.3: Visual of SS Treatment. The red-dotted line once again represents the grand mean for insect count. SS Treatment is computed by subtracting each treatment group mean for insect count (color coded lines) from this grand mean, squaring, and then multiplying by the j replicates comprising each treatment group, in this case 12. The 6 values corresponding to each treatment group resulting from this computation are then summed.
+</p>
+</div>
+<div class="figure" style="text-align: left"><span id="fig:sserror"></span>
+<img src="anova-tutorial_files/figure-html/sserror-1.png" alt="Visual of SS Error. The red-dotted line in each panel represents each treatment group mean for insect count. SS Error is computed by subtracting each observed count from a plot from its respective treatment group mean, squaring, and then summing these values." width="80%" />
+<p class="caption">
+Figure 3.4: Visual of SS Error. The red-dotted line in each panel represents each treatment group mean for insect count. SS Error is computed by subtracting each observed count from a plot from its respective treatment group mean, squaring, and then summing these values.
+</p>
+</div>
+<p>ANOVA compares the variability due to the treatment to that due to error to generate a test statistic. We will now see how we can compute these variance quantities and do ANOVA in R by applying a model to our data.</p>
+</div>
+<div id="means-model" class="section level2">
+<h2><span class="header-section-number">3.2</span> Means Model</h2>
+<p>We can model our 1-way ANOVA data using the <strong>means model</strong>, an additive linear model for when our explanatory variable is categorical, viz.,</p>
+<p><span class="math display">\[y_{ij} = \mu_{i} +    \epsilon_{ij} \]</span>
+where <span class="math inline">\(y_{ij}\)</span> ~ independent and Normal (<span class="math inline">\(\mu_{i}, \sigma^2\)</span>) and <span class="math inline">\(\epsilon_{ij}\)</span> ~ independent and Normal (<span class="math inline">\(0, \sigma^2\)</span>). Let’s define what the parameters in this expression represent in the context of our <code>InsectSprays</code> example:</p>
+<ul>
+<li><p><strong><span class="math inline">\(y_{ij}\)</span></strong> represents the insect count for the <span class="math inline">\(jth\)</span> insect plot given the <span class="math inline">\(ith\)</span> insecticide spray</p></li>
+<li><p><strong><span class="math inline">\(\mu_{i}\)</span></strong> represents the true mean insect count for all insect plots given the <span class="math inline">\(ith\)</span> insecticide spray</p></li>
+<li><p><strong><span class="math inline">\(\epsilon_{ij}\)</span></strong> represents the error for the for the <span class="math inline">\(jth\)</span> insect plot given the <span class="math inline">\(ith\)</span> insecticide spray</p></li>
+</ul>
+<p>Note that the equation form of this model uses parameter notation (e.g. we are talking about a population). When we use this model in practice we estimate the parameters with statistics from our data. Without further ado, let’s do some computing!</p>
+<div id="employing-the-means-model-to-do-1-way-anova-in-r" class="section level3">
+<h3><span class="header-section-number">3.2.1</span> Employing the Means Model to do 1-way ANOVA in R</h3>
+<p>The below code uses the means model and matrix algebra to eventually compute the ANOVA F-statistic for our <code>InsectSprays</code> example.</p>
+<pre><code class='language-r'><code>### ANOVA Preliminaries<br><br>## Data<br>insects <- InsectSprays <br><br>## response variable (n x 1 matrix)<br>response_variable <- insects %>%<br>&nbsp;&nbsp;pull(count) %>% <br>&nbsp;&nbsp;as.matrix()<br><br>## Design matrix (n x p matrix)<br># Each column is using indicator coding, a ‘1’ for the treatment, and 0 for other. So column 1 will generate the mean for treatment level1, column 2 for treatment level2, and column 3 for treatment level3 and so on.<br><br><span style='background-color:orange'>design_matrix</span> <- model.matrix(~ insects$spray + 0)<br><br>## p x 1 matrix of treatment means<br><span style='background-color:red'>trt_means</span> <- solve(crossprod(<span style='background-color:orange'>design_matrix</span>), crossprod(<span style='background-color:orange'>design_matrix</span>, response_variable))<br><br>### ANOVA<br><br>n <- nrow(response_variable)<br>p <- ncol(<span style='background-color:orange'>design_matrix</span>)<br>j <- matrix(1, n, n)<br><br>## Variation computations<br><span style='background-color:yellow'>ss_tot</span> <- crossprod(response_variable) - (1/n) * crossprod(response_variable, j) %*% response_variable <br><span style='background-color:yellow'>ss_trt</span> <- (t(<span style='background-color:red'>trt_means</span>) %*% crossprod(<span style='background-color:orange'>design_matrix</span>, response_variable)) - (1/n) * crossprod(response_variable, j) %*% response_variable<br><span style='background-color:yellow'>ss_error</span> <- <span style='background-color:yellow'>ss_tot</span> - <span style='background-color:yellow'>ss_trt</span><br><br>## Degrees of freedom<br>total_df <- n - 1<br>trt_df <- p - 1<br>error_df <- n - p <br><br>## Compute F-stat<br>MS_trt <- <span style='background-color:yellow'>ss_trt</span> / trt_df<br>MS_error <- <span style='background-color:yellow'>ss_error</span> / error_df<br><span style='background-color:green'>F_stat</span> <- MS_trt / MS_error</code></code></pre>
+<p>A few points to note about the code above:</p>
+<ol style="list-style-type: decimal">
+<li>The <span style="color: orange;">design matrix</span> (often denoted <strong>X</strong>) is useful to estimate our <strong><span class="math inline">\(\mu_{i}\)</span></strong> parameters (<span style="color: red;">treatment means</span>) from the means model. The <span style="color: orange;">design matrix</span> is a way to represent the number of treatment groups and replicates per treatment group. Our <code>InsectSprays</code> data is a little lengthy to show its full means model <span style="color: orange;">design matrix</span>, so let’s simplify and say we only have only 6 insect plots with 3 different sprays (2 replicates per spray). We represent the <span style="color: orange;">design matrix</span> (<strong>X</strong>) and compute the <span style="color: red;">treatment means</span> (<span class="math inline">\(\overline{y}_{i.}\)</span>), viz.,</li>
+</ol>
+<p><span class="math display">\[\left[\begin{array}
+{rrr}
+y_{1,1} \\
+y_{1,2} \\
+y_{2,1} \\
+y_{2,2}\\
+y_{3,1} \\
+y_{3,2} \\
+\end{array}\right] =
+\left[\begin{array}
+{rrr}
+1 &amp; 0 &amp; 0 \\
+1 &amp; 0 &amp; 0\\
+0 &amp; 1 &amp; 0\\
+0 &amp; 1 &amp; 0\\
+0 &amp; 0 &amp; 1\\
+0 &amp; 0 &amp; 1\\
+\end{array}\right] 
+\left[\begin{array}
+{rrr}
+\mu_{1} \\
+\mu_{2} \\
+\mu_{3} \\
+\end{array}\right] +
+\left[\begin{array}
+{rrr}
+\epsilon_{1,1} \\
+\epsilon_{1,2} \\
+\epsilon_{2,1} \\
+\epsilon_{2,2}\\
+\epsilon_{3,1} \\
+\epsilon_{3,2} \\
+\end{array}\right]\]</span>
+<span class="math display">\[\overline{y}_{i.} = (X&#39;X)^{-1}X&#39;Y\]</span></p>
+<ol start="2" style="list-style-type: decimal">
+<li>Our <span style="color: yellow;">SS values</span> are computed using matrix operations carrying out the equations described in <a href="meanseffects.html#bookkeep">3.1</a>. For brevity I will not describe the operations in detail.</li>
+<li>Lastly, our ANOVA <span style="color: green;">F-statistic</span> is calculated by taking the ratio of our <strong>mean sum of squares treatment</strong> (between treatment group variation) and <strong>mean sum of squares error</strong> (within treatment group variation). A high <span style="color: green;">F-statistic</span> is our measure to suggest the variation is largely explained by our explanatory variable rather than random variation. In the context of the means model, it allows us to conclude that at least one of our treatment means is significantly different from 0. The value of our <span style="color: green;">F-statistic</span> for our <code>InsectSprays</code> example computed above is:</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1">F_stat</a></code></pre></div>
+<pre><code>##          [,1]
+## [1,] 34.70228</code></pre>
+<p>This is the same result as using R’s built in <code>anova</code> function</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" title="1">test_ANOVA &lt;-<span class="st"> </span><span class="kw">lm</span>(insects<span class="op">$</span>count <span class="op">~</span><span class="st"> </span>insects<span class="op">$</span>spray)</a>
+<a class="sourceLine" id="cb5-2" title="2"><span class="kw">anova</span>(test_ANOVA)</a></code></pre></div>
+<pre><code>## Analysis of Variance Table
+## 
+## Response: insects$count
+##               Df Sum Sq Mean Sq F value    Pr(&gt;F)    
+## insects$spray  5 2668.8  533.77  34.702 &lt; 2.2e-16 ***
+## Residuals     66 1015.2   15.38                      
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</code></pre>
+</div>
+</div>
+<div id="effects-model" class="section level2">
+<h2><span class="header-section-number">3.3</span> Effects Model</h2>
+<p>We can model our 1-way ANOVA data using another additive linear model for when our explanatory variable is categorical, called the <strong>effects model</strong>, viz.,</p>
+<p><span class="math display">\[y_{ij} = \mu + \tau_{i} + \epsilon_{ij} \]</span>
+where <span class="math inline">\(y_{ij}\)</span> ~ independent and Normal (<span class="math inline">\(\mu + \tau_{i}, \sigma^2\)</span>) and <span class="math inline">\(\epsilon_{ij}\)</span> ~ independent and Normal (<span class="math inline">\(0, \sigma^2\)</span>). Similar to what we did with the means model, lets define what the parameters of the effects model represent in the context of our <code>InsectSprays</code> example:</p>
+<ul>
+<li><p><strong><span class="math inline">\(y_{ij}\)</span></strong> represents the insect count for the <span class="math inline">\(jth\)</span> insect plot given the <span class="math inline">\(ith\)</span> insecticide spray</p></li>
+<li><p><strong><span class="math inline">\(\mu\)</span></strong> represents the true mean insect count for all insect plots given a spray</p></li>
+<li><p><strong><span class="math inline">\(\tau_{i}\)</span></strong> represents the effect of the the <span class="math inline">\(ith\)</span> insecticide spray on insect count</p></li>
+<li><p><strong><span class="math inline">\(\epsilon_{ij}\)</span></strong> represents the error for the for the <span class="math inline">\(jth\)</span> insect plot given the <span class="math inline">\(ith\)</span> insecticide spray</p></li>
+</ul>
+<p>An <strong>effect</strong> in the context of this model is the <em>difference</em> between the mean for the <span class="math inline">\(ith\)</span> treatment and the grand mean. We operate under the constraint that all our estimated effects sum to 0, viz.,</p>
+<p><span class="math display">\[\sum\tau_{i} = 0\]</span>
+You will see the role of this assumption after we employ the effects model in R.</p>
+<div id="employing-the-effects-model-to-do-1-way-anova-in-r" class="section level3">
+<h3><span class="header-section-number">3.3.1</span> Employing the Effects Model to do 1-way ANOVA in R</h3>
+<pre><code class='language-r'><code>### ANOVA Preliminaries<br><br>## Data<br>insects <- InsectSprays <br><br>## response variable (n x 1 matrix)<br>response_variable <- insects %>%<br>&nbsp;&nbsp;pull(count) %>% <br>&nbsp;&nbsp;as.matrix()<br><br>## Design matrix (n x p matrix)<br># First column is now an intercept term used to compute the grand mean<br>contrasts(insects$spray) <- contr.sum(6, contrasts=TRUE)<br><span style='background-color:orange'>design_matrix</span> <- model.matrix(~ insects$spray)<br><br>## p x 1 matrix of effects model parameters<br><span style='background-color:red'>model_param</span> <- solve(crossprod(<span style='background-color:orange'>design_matrix</span>), crossprod(<span style='background-color:orange'>design_matrix</span>, response_variable))<br><br>### ANOVA<br><br>n <- nrow(response_variable)<br>p <- ncol(<span style='background-color:orange'>design_matrix</span>)<br>j <- matrix(1, n, n)<br><br>## Variation computations<br><span style='background-color:yellow'>ss_tot</span> <- crossprod(response_variable) - (1/n) * crossprod(response_variable, j) %*% response_variable <br><span style='background-color:yellow'>ss_trt</span> <- (t(<span style='background-color:red'>model_param</span>) %*% crossprod(<span style='background-color:orange'>design_matrix</span>, response_variable)) - (1/n) * crossprod(response_variable, j) %*% response_variable<br><span style='background-color:yellow'>ss_error</span> <- <span style='background-color:yellow'>ss_tot</span> - <span style='background-color:yellow'>ss_trt</span><br><br>## Degrees of freedom<br>total_df <- n - 1<br>trt_df <- p - 1<br>error_df <- n - p <br><br>## Compute F-stat<br>MS_trt <- <span style='background-color:yellow'>ss_trt</span> / trt_df<br>MS_error <- <span style='background-color:yellow'>ss_error</span> / error_df<br><span style='background-color:green'>F_stat</span> <- MS_trt / MS_error</code></code></pre>
+<p>Our ANOVA computation is largely the same as what we did for the means model, but our <span style="color: orange;">design matrix</span> this time around helps compute the <span style="color: red;">parameters</span> for the effects model, namely our grand mean and effects for our treatments.</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb7-1" title="1">model_param</a></code></pre></div>
+<pre><code>##                     [,1]
+## (Intercept)     9.500000
+## insects$spray1  5.000000
+## insects$spray2  5.833333
+## insects$spray3 -7.416667
+## insects$spray4 -4.583333
+## insects$spray5 -6.000000</code></pre>
+<p>The intercept term here is our grand mean insect count- <em>9.5 insects</em>. Using our effect estimations we can easily calculate means for the treatment groups:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" title="1">model_param <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-2" title="2"><span class="st">  </span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-3" title="3"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">param =</span> V1) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb9-4" title="4"><span class="st">  </span>tibble<span class="op">::</span><span class="kw">rownames_to_column</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb9-5" title="5"><span class="st">  </span><span class="kw">mutate</span>(<span class="dt">trt_mean =</span> <span class="fl">9.5</span> <span class="op">+</span><span class="st"> </span>param)</a></code></pre></div>
+<pre><code>##          rowname     param  trt_mean
+## 1    (Intercept)  9.500000 19.000000
+## 2 insects$spray1  5.000000 14.500000
+## 3 insects$spray2  5.833333 15.333333
+## 4 insects$spray3 -7.416667  2.083333
+## 5 insects$spray4 -4.583333  4.916667
+## 6 insects$spray5 -6.000000  3.500000</code></pre>
+<p>Notice that we are missing one effect estimate for spray F! This is because we must drop a treatment group from the model for the matrix operations to work (we sacrifice a treatment group effect to compute the grand mean). We can find the missing effect by recalling the model assumption <span class="math inline">\(\sum\tau_{i} = 0\)</span>.</p>
+<div class="sourceCode" id="cb11"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb11-1" title="1">missing_effect &lt;-<span class="st"> </span>model_param <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-2" title="2"><span class="st">  </span><span class="kw">as.data.frame</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-3" title="3"><span class="st">  </span><span class="kw">rename</span>(<span class="dt">param =</span> V1) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb11-4" title="4"><span class="st">  </span>tibble<span class="op">::</span><span class="kw">rownames_to_column</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb11-5" title="5"><span class="st">  </span><span class="kw">slice</span>(<span class="dv">2</span><span class="op">:</span><span class="dv">6</span>)</a>
+<a class="sourceLine" id="cb11-6" title="6"></a>
+<a class="sourceLine" id="cb11-7" title="7"><span class="kw">sum</span>(missing_effect<span class="op">$</span>param)</a></code></pre></div>
+<pre><code>## [1] -7.166667</code></pre>
+<p>Our missing effect for spray F is therefore 7.167 insects.</p>
+<p>Our <span style="color: green;">F-statistic</span> remains the same as what it was for the means model when computing with the effects model. It is again 34.7. The interpretation changes from what we said in the means model- it suggests that at least one of the effects of the <span class="math inline">\(ith\)</span> insect spray on insect count are not equal to 0.</p>
+</div>
+</div>
+<div id="check-in-1" class="section level2">
+<h2><span class="header-section-number">3.4</span> Check-in</h2>
+<ol style="list-style-type: decimal">
+<li>Suppose we ran our <code>InsectSprays</code> experiment twice using only sprays D, E, and F and obtained the following results:</li>
+</ol>
+<p><img src="anova-tutorial_files/figure-html/unnamed-chunk-15-1.png" width="672" /></p>
+<p><strong>Scenario 1</strong></p>
+<pre><code>## # A tibble: 3 x 3
+##   spray  mean `std dev`
+##   &lt;fct&gt; &lt;dbl&gt;     &lt;dbl&gt;
+## 1 D      4.92      2.50
+## 2 E      3.5       1.73
+## 3 F     16.7       6.21</code></pre>
+<p><strong>Scenario 2</strong></p>
+<pre><code>## # A tibble: 3 x 3
+##   spray  mean `std dev`
+##   &lt;fct&gt; &lt;dbl&gt;     &lt;dbl&gt;
+## 1 D      4.92       3.2
+## 2 E      3.5        2  
+## 3 F     16.7        7.</code></pre>
+<p>Assume in both scenarios that 12 replicates per treatment group were used. Will one of the two data sets produce a larger F-statistic (Scenario 1 or Scenario 2)? Why or why not.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>Suppose we want to run an ANOVA on a experiment set-up with 3 different treatment groups (2 replicates per treatment) using the <strong>effects model</strong>. There is 1 observation of the response variable per replicate for this experiment. To compute our model parameters, how would we set up the design matrix?</li>
+</ol>
+
+</div>
+</div>
+<h3>References</h3>
+<div id="refs" class="references">
+<div id="ref-kutner2005">
+<p>Kutner, Michael H, Christopher J Nachtsheim, John Neter, William Li, and others. 2005. <em>Applied Linear Statistical Models</em>. Vol. 5. McGraw-Hill Irwin New York.</p>
+</div>
+</div>
+            </section>
+
+          </div>
+        </div>
+      </div>
+<a href="basics.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="power-and-sample-size.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
+    </div>
+  </div>
+<script src="libs/gitbook-2.6.7/js/app.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/lunr.js"></script>
+<script src="libs/gitbook-2.6.7/js/clipboard.min.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-search.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-sharing.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-fontsettings.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-bookdown.js"></script>
+<script src="libs/gitbook-2.6.7/js/jquery.highlight.js"></script>
+<script src="libs/gitbook-2.6.7/js/plugin-clipboard.js"></script>
+<script>
+gitbook.require(["gitbook"], function(gitbook) {
+gitbook.start({
+"sharing": {
+"github": false,
+"facebook": true,
+"twitter": true,
+"linkedin": false,
+"weibo": false,
+"instapaper": false,
+"vk": false,
+"all": ["facebook", "twitter", "linkedin", "weibo", "instapaper"]
+},
+"fontsettings": {
+"theme": "white",
+"family": "sans",
+"size": 2
+},
+"edit": {
+"link": null,
+"text": null
+},
+"history": {
+"link": null,
+"text": null
+},
+"view": {
+"link": null,
+"text": null
+},
+"download": ["anova-tutorial.pdf", "anova-tutorial.epub"],
+"toc": {
+"collapse": "subsection"
+}
+});
+});
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    var src = "true";
+    if (src === "" || src === "true") src = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML";
+    if (location.protocol !== "file:")
+      if (/^https?:/.test(src))
+        src = src.replace(/^https?:/, '');
+    script.src = src;
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+</body>
+
+</html>

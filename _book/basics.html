@@ -4,11 +4,11 @@
 
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>References | 1-Way ANOVA- Model Representations, Power, and Sample Size Tutorial</title>
+  <title>Part 2 ANOVA Basics | 1-Way ANOVA- Model Representations, Power, and Sample Size Tutorial</title>
   <meta name="description" content="This is a 1-way ANOVA tutorial built with bookdown." />
   <meta name="generator" content="bookdown 0.19 and GitBook 2.6.7" />
 
-  <meta property="og:title" content="References | 1-Way ANOVA- Model Representations, Power, and Sample Size Tutorial" />
+  <meta property="og:title" content="Part 2 ANOVA Basics | 1-Way ANOVA- Model Representations, Power, and Sample Size Tutorial" />
   <meta property="og:type" content="book" />
   
   
@@ -16,7 +16,7 @@
   <meta name="github-repo" content="sjmarks/anovatutorial" />
 
   <meta name="twitter:card" content="summary" />
-  <meta name="twitter:title" content="References | 1-Way ANOVA- Model Representations, Power, and Sample Size Tutorial" />
+  <meta name="twitter:title" content="Part 2 ANOVA Basics | 1-Way ANOVA- Model Representations, Power, and Sample Size Tutorial" />
   
   <meta name="twitter:description" content="This is a 1-way ANOVA tutorial built with bookdown." />
   
@@ -31,8 +31,8 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black" />
   
   
-<link rel="prev" href="check-in-answers.html"/>
-
+<link rel="prev" href="index.html"/>
+<link rel="next" href="meanseffects.html"/>
 <script src="libs/jquery-2.2.3/jquery.min.js"></script>
 <link href="libs/gitbook-2.6.7/css/style.css" rel="stylesheet" />
 <link href="libs/gitbook-2.6.7/css/plugin-table.css" rel="stylesheet" />
@@ -174,28 +174,62 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="references" class="section level1 unnumbered">
-<h1>References</h1>
+<div id="basics" class="section level1">
+<h1><span class="header-section-number">Part 2</span> ANOVA Basics</h1>
+<p>As alluded to in Part <a href="index.html#intro">1</a> of this tutorial, we use ANOVA to make decisions about the relationships among means. Typically we do this when we have <strong>more than two</strong> treatment groups. This is because we could simply use a two-sample t-test to compare two (independent) groups. The power of ANOVA is that we can compare more than two means. For example, let us look at the <code>InsectSprays</code> data set in R <span class="citation">(Beall <a href="#ref-beall1942" role="doc-biblioref">1942</a>)</span>. This simple data set provides counts of insects treated with 6 different insecticides.</p>
+<p>First, let us consider the components of this experiment and its design:</p>
+<p><strong>Treatment Structure</strong></p>
+<ul>
+<li><p>Factor: Insecticide (spray)</p></li>
+<li><p>Level: 6 levels (A, B, C, D, E, F)</p></li>
+</ul>
+<p><strong>Design Structure</strong></p>
+<ul>
+<li><p>Experimental Unit: A plot of insects</p></li>
+<li><p>Randomization Method: Completely randomized design (CRD)</p></li>
+<li><p>Replication: 12 replicates per type of insecticide (spray)</p></li>
+</ul>
+<p><strong>Response Variable</strong></p>
+<ul>
+<li>Number of insects counted in a plot after application of insecticide</li>
+</ul>
+<p>The design structure above warrants some additional discussion. Firstly, the experimental unit is defined as the unit that the treatment is applied. The randomization method of CRD communicates that the experimental units were randomly assigned to each treatment. In this case, insect plots were randomly assigned one of the 6 sprays. Random assignment <em><strong>equalizes</strong></em> the extraneous sources of variability in comparison of the treatment groups. This enables cause and effect conclusions to be drawn from the experiment, protecting against extra variation in the response variable from becoming confounding variables. For example, we might assume that the insects in this study have genetic variation which would make some insects more or less susceptible to certain sprays- CRD makes sure this isn’t the reason a plot responds a certain way to one of the 6 sprays. Lastly, replication is important because it serves to distribute extraneous variation in the response equally, giving us a reasonably equal variance within all treatment groups.</p>
+<p>With the preliminaries out of the way, let us now explore the <code>InsectSprays</code> data:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">insects &lt;-<span class="st"> </span>InsectSprays </a>
+<a class="sourceLine" id="cb1-2" title="2"></a>
+<a class="sourceLine" id="cb1-3" title="3">insects <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="st">  </span><span class="kw">group_by</span>(spray) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-5" title="5"><span class="st">  </span><span class="kw">summarise</span>(<span class="dt">mean =</span> <span class="kw">mean</span>(count), <span class="st">`</span><span class="dt">std dev</span><span class="st">`</span> =<span class="st"> </span><span class="kw">sd</span>(count))</a></code></pre></div>
+<pre><code>## # A tibble: 6 x 3
+##   spray  mean `std dev`
+##   &lt;fct&gt; &lt;dbl&gt;     &lt;dbl&gt;
+## 1 A     14.5       4.72
+## 2 B     15.3       4.27
+## 3 C      2.08      1.98
+## 4 D      4.92      2.50
+## 5 E      3.5       1.73
+## 6 F     16.7       6.21</code></pre>
+<div class="figure" style="text-align: left"><span id="fig:insect-boxplot"></span>
+<img src="anova-tutorial_files/figure-html/insect-boxplot-1.png" alt="Boxplot showing differences and variation in count response between insecticide treatment groups." width="80%" />
+<p class="caption">
+Figure 2.1: Boxplot showing differences and variation in count response between insecticide treatment groups.
+</p>
+</div>
+<p>Looking at the produced tibble and box plot, it appears that there is variability in insect count for insect plots exposed to different insecticides. Insect plots exposed to <strong>Spray F</strong> had the highest count on average (16.7), while insect plots exposed to <strong>Spray C</strong> had the lowest count on average (2.08). The graph and table also illustrate differences in within treatment group variation for the 6 sprays; the spread of the observations vary between each group. For example, the <strong>Spray E</strong> group had low variance with a standard deviation of 1.73 insects, while <strong>Spray F</strong> had high variance with a standard deviation of 6.21 insects.</p>
+<p>These initial observations from our data exploration are nice, but the question remains as to whether or not the observed variation in the insect counts is truly due to variation due to spray. The next part of the tutorial will demonstrate two models for our data that will help us answer this question.</p>
+<div id="check-in" class="section level2">
+<h2><span class="header-section-number">2.1</span> Check-in</h2>
+<ol style="list-style-type: decimal">
+<li><p>Suppose the insect plots in the above experiment were comprised using only one insect species. What is one <em>statistical advantage</em> of doing this?</p></li>
+<li><p>What is the <em>statistical disadvantage</em> of limiting plots to one type of insect species?</p></li>
+</ol>
 
+</div>
+</div>
+<h3>References</h3>
 <div id="refs" class="references">
-<div>
+<div id="ref-beall1942">
 <p>Beall, Geoffrey. 1942. “The Transformation of Data from Entomological Field Experiments so That the Analysis of Variance Becomes Applicable.” <em>Biometrika</em> 32 (3/4): 243–62.</p>
-</div>
-<div>
-<p>Kutner, Michael H, Christopher J Nachtsheim, John Neter, William Li, and others. 2005. <em>Applied Linear Statistical Models</em>. Vol. 5. McGraw-Hill Irwin New York.</p>
-</div>
-<div>
-<p>Oehlert, Gary W. 2010. <em>A First Course in Design and Analysis of Experiments</em>.</p>
-</div>
-<div>
-<p>Wickham, Hadley. 2019. <em>Tidyverse: Easily Install and Load the ’Tidyverse’</em>. <a href="https://CRAN.R-project.org/package=tidyverse">https://CRAN.R-project.org/package=tidyverse</a>.</p>
-</div>
-<div>
-<p>Xie, Yihui. 2015. <em>Dynamic Documents with R and Knitr</em>. 2nd ed. Boca Raton, Florida: Chapman; Hall/CRC. <a href="http://yihui.org/knitr/">http://yihui.org/knitr/</a>.</p>
-</div>
-<div>
-<p>———. 2020. <em>Bookdown: Authoring Books and Technical Documents with R Markdown</em>. <a href="https://CRAN.R-project.org/package=bookdown">https://CRAN.R-project.org/package=bookdown</a>.</p>
-</div>
 </div>
 </div>
             </section>
@@ -203,8 +237,8 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           </div>
         </div>
       </div>
-<a href="check-in-answers.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
-
+<a href="index.html" class="navigation navigation-prev " aria-label="Previous page"><i class="fa fa-angle-left"></i></a>
+<a href="meanseffects.html" class="navigation navigation-next " aria-label="Next page"><i class="fa fa-angle-right"></i></a>
     </div>
   </div>
 <script src="libs/gitbook-2.6.7/js/app.min.js"></script>

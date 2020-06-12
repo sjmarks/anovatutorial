@@ -56,7 +56,7 @@ _**How can we design our experiment to increase our chances of getting a statist
 
 ## Power
 
-The answer to the above question can be answered by thinking about **power**. Power is the probability that we reject our null hypothesis when in fact the null hypothesis is actually false. To make sense of this recall the Type I error and Type II error rates from introductory statistics:
+The answer to the above question can be answered by thinking about **power**. Power is the probability that we reject our null hypothesis when in fact the null hypothesis is actually false [@oehlert2010]. To make sense of this recall the Type I error and Type II error rates from introductory statistics:
 
 - Type I Error Rate: Probability that we reject our null hypothesis when it is in fact the null is true
 - Type II Error Rate: Probabilility that we fail to reject the null hypothesis when in fact the null is false
