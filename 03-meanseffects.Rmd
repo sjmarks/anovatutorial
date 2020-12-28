@@ -137,7 +137,7 @@ Note that the equation form of this model uses parameter notation (e.g. we are t
 
 The below code uses the means model and matrix algebra to eventually compute the ANOVA F-statistic for our `InsectSprays` example. 
 
-```{r meansmodel-compute, echo = F}
+```{r meansmodel-compute}
 ### ANOVA Preliminaries
 
 ## Data
@@ -181,7 +181,7 @@ F_stat <- MS_trt / MS_error
 
 ```{r echo = F, warning = F}
 # Highlight important aspects of the ANOVA computation.
-decorate("meansmodel-compute") %>% 
+flair::decorate("meansmodel-compute") %>% 
   flair("design_matrix", background = "orange") %>%
   flair("trt_means", background = "red") %>% 
   flair("ss_tot", background = "yellow") %>% 
@@ -277,7 +277,7 @@ You will see the role of this assumption after we employ the effects model in R.
 
 ### Employing the Effects Model to do 1-way ANOVA in R
 
-```{r effectsmodel-compute, echo = F}
+```{r effectsmodel-compute, include = T}
 ### ANOVA Preliminaries
 
 ## Data
@@ -321,7 +321,7 @@ F_stat <- MS_trt / MS_error
 
 ```{r echo = F, warning = F}
 # Highlight important aspects of the ANOVA computation.
-decorate("effectsmodel-compute") %>% 
+flair::decorate("effectsmodel-compute") %>% 
   flair("design_matrix", background = "orange") %>%
   flair("model_param", background = "red") %>% 
   flair("ss_tot", background = "yellow") %>% 
