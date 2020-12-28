@@ -5,6 +5,7 @@ library(ggplot2)
 library(dplyr)
 library(gganimate)
 library(transformr)
+library(gifski)
 ```
 
 ```{r echo = F, warning = F}
@@ -26,7 +27,7 @@ The F-statistic we obtained from our `insectSprays` example was so large that we
 We can plot the null **F(5, 66)** distribution in R:
 
 ```{r}
-insects_F <- ggplot(NULL, aes(x = c(0, 35))) +
+insects_F <- ggplot(data.frame(x = c(0, 35)), aes(x = x)) +
   stat_function(fun = df, geom = "area", fill = "steelblue",
     args = list(df1 = 5, df2 = 66), alpha = 0.6) + 
   theme_classic() + 
@@ -86,7 +87,7 @@ ncp_1
 Plotting our distributions:
 
 ```{r power_distr }
-example_power_fdists <- ggplot(NULL, aes(x = c(0, 15))) +
+example_power_fdists <- ggplot(data.frame(x = c(0, 15)), aes(x = x)) +
   
   # Null F-distribution F(2, 27, 0)
   stat_function(fun = df, geom = "area", fill = "steelblue",
@@ -138,7 +139,7 @@ ncp_3 <- 15 * ((group_means[1] - grand_mean)^2 + (group_means[2] - grand_mean)^2
 ```{r include = F}
 # Ugly but it works lol
 
-sample_size_animation <- ggplot(NULL, aes(x = c(0, 15))) +
+sample_size_animation <- ggplot(data.frame(x = c(0, 15)), aes(x = x)) +
   theme_classic() + 
   ylab("Density") + 
   xlab("F") + 
@@ -200,7 +201,9 @@ sample_size_animation <- ggplot(NULL, aes(x = c(0, 15))) +
   
   transition_layers(layer_length = 1, transition_length = 2)
 
-anim_save("power_animation.gif", animation = sample_size_animation)  
+animate(sample_size_animation, duration = 15, fps = 20, width = 700, height = 450, renderer = gifski_renderer())
+
+anim_save("power_animation.gif")  
 ```
 
 ```{r flowchart, fig.cap='Animation showing the change in power with increasing sample size. The different shades of green represent the changing amounts of power.', echo = F}
