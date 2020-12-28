@@ -18,7 +18,7 @@ ANOVA is short for analysis of variance. It is a widely used statistical method 
 
 This tutorial focuses on 1-way ANOVA, specifically ways to model our data in the context of this statistical method. We introduce the means and effects models and their assumptions and implement these approaches manually in R. We also discuss power and sample size and provide an interactive visualization to see what influences power in an ANOVA. Discussion of power and sample size helps answer the question: "How might we increase the chances of getting a statistically significant result from our ANOVA?" Thinking about power and sample size not only will bolster your statistical chops, it might also come in handy in practice when planning research design or writing research grant proposals.
 
-The tutorial assumes you have used R before and are familar working with matrices. Some examples and demos utilize functions from the **Tidyverse** [@R-tidyverse]. This tutorial was written using the **bookdown** package [@R-bookdown], which was built on top of R Markdown and **knitr** [@xie2015].
+The tutorial assumes you have used R before and are familiar working with matrices. Some examples and demos utilize functions from the **Tidyverse** [@R-tidyverse]. This tutorial was written using the **bookdown** package [@R-bookdown], which was built on top of R Markdown and **knitr** [@xie2015].
 
 ```{r include=FALSE}
 # automatically create a bib database for R packages
